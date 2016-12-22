@@ -1,0 +1,305 @@
+﻿\chapter{The Trigger Map of The MTD System for Run14 and Run15}
+\label{chap:mtdtrgmap}
+
+Here is a summary of the logic from the MTD modules to electronics in the STAR trigger system called ``QT board''. The whole MTD system (122 MTD modules) is divided into 28 MTD trigger patches. In general, one trigger patch consists of 5 MTD modules in the same $\eta$ region. However, this is not necessary for every trigger patch due to the asymmetric MTD geometry in $\phi$ direction. This granularity is reduced to 12 MTD trigger sectors (different TPC coverage scenarios) in the QT: 6 divisions in $\phi$ by 2 in $\eta$ (positive (West) or negative (East) $\eta$).
+
+The MTD QT boards are numbered MT001 - MT004. Each QT board, with 4 daughter cards, has 32 inputs in a line and the inputs can be numbered 1 - 32 from top to bottom. Inputs 1 - 8, 9 - 16, 17 - 24, and 25 - 32 are belonging to daughter card A, B, C and D, respectively. Each MTD trigger patch has two output signals, marked as J2 and J3, while each signal occupies two QT input channels recording the magnitude and timing information. Thus there are a maximum of eight MTD trigger patches in any given QT board. Inputs 1 - 4, 9 - 12, 17 - 20, 25 - 28 of QT board are for MTRG trigger outputs. Inputs 5-8 are the associated TACs for inputs 1-4, etc. The J2 of the trigger patches located at backleg position 1, 2 and 3 corresponds to the East-end readout while the J3 corresponds to the West-end readout. Meanwhile, the J2 of the trigger patches located at backleg position 4 and 5 corresponds to the West-end readout while the J3 corresponds to the East-end readout. The logic from the MTD modules to QT board guarantees that there are a maximum of four MTD trigger sectors in any given QT and the four sectors are identified with two bits.
+
+The MTRG outputs go through a breakout board, BNC-to-Lemo, before going to the QT board. Each breakout board handles up to 16 MTRG outputs.
+
+NOTE: The \textcolor{red}{\textbf{red MTD modules}} (BL means Backleg) in the following tables are the locations of the MTRG boards. In general, the MTRG board is located in the middle (in $\phi$) position of a MTD trigger patch. 
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT001).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{1st Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+ \multirow{16}{*}{\thead{\textbf{MT001}\\\textbf{(0x10)}}} & \multirow{4}{*}{A} & \multirow{2}{*}{\thead{BL24-1, \textcolor{red}{\textbf{BL25-1}},\\BL26-1, BL27-1}} & J2 & 1 &1 & \multirow{2}{*}{1} & \multirow{2}{*}{21, 22}\\ \cline{4-6}
+ &&& J3 & 2 & 2 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL24-5, \textcolor{red}{\textbf{BL25-5}},\\BL26-5, BL27-5}} & J2 & 3 & 3 & \multirow{2}{*}{2} & \multirow{2}{*}{2, 3} \\ \cline{4-6}
+ &&& J3 & 4 & 4 && \\ \cline{2-8}
+ & \multirow{4}{*}{B} & \multirow{2}{*}{\thead{BL24-2, \textcolor{red}{\textbf{BL25-2}},\\BL26-2, BL27-2}} & J2 & 5 & 9 & \multirow{2}{*}{1} & \multirow{2}{*}{21, 22} \\ \cline{4-6}
+ &&& J3 & 6 & 10 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL24-4, \textcolor{red}{\textbf{BL25-4}},\\BL26-4, BL27-4}} & J2 & 7 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{2, 3} \\ \cline{4-6}
+ &&& J3 & 8 & 12 && \\ \cline{2-8}
+ & \multirow{4}{*}{C} & \multirow{2}{*}{\thead{BL24-3, \textcolor{red}{\textbf{BL25-3}},\\BL26-3, BL27-3}} &  J2 & 9 & 17 & 1 & 21, 22 \\ \cline{4-8}
+ &&& J3 & 10 & 18 & 2 & 2, 3 \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL28-3, BL29-3, \textcolor{red}{\textbf{BL30-3}},\\BL1-3, BL2-3}} & J2 & 11 & 19 & 3 & 23, 24 \\ \cline{4-8}
+ &&& J3 & 12 & 20 & 4 & 1, 12 \\ \cline{2-8}
+ & \multirow{4}{*}{D} & \multirow{2}{*}{\thead{BL28-1, BL29-1, \textcolor{red}{\textbf{BL30-1}},\\BL1-1, BL2-1}} & J2 & 13 & 25 & \multirow{2}{*}{3} & \multirow{2}{*}{23, 24} \\ \cline{4-6}
+ &&& J3 & 14 & 26 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL28-5, BL29-5, \textcolor{red}{\textbf{BL30-5}},\\BL1-5, BL2-5}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{1, 12} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+ \Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT002).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{2nd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{16}{*}{\thead{\textbf{MT002}\\\textbf{(0x1a)}}} & \multirow{4}{*}{A} & \multirow{2}{*}{\thead{BL3-1, BL4-1, \textcolor{red}{\textbf{BL5-1}},\\BL6-1, BL7-1}} & J2 & 1 & 1 & \multirow{2}{*}{1} & \multirow{2}{*}{13, 14}\\ \cline{4-6}
+ &&& J3 & 2 &2 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL3-5, BL4-5, \textcolor{red}{\textbf{BL5-5}},\\BL6-5, BL7-5}} & J2 & 3 & 3 & \multirow{2}{*}{2} & \multirow{2}{*}{10, 11} \\ \cline{4-6}
+ &&& J3 & 4 & 4 && \\ \cline{2-8}
+ & \multirow{4}{*}{B} & \multirow{2}{*}{\thead{BL3-2, BL4-2, \textcolor{red}{\textbf{BL5-2}},\\BL6-2, BL7-2}} & J2 & 5 & 9 & \multirow{2}{*}{1} & \multirow{2}{*}{13, 14} \\ \cline{4-6}
+ &&& J3 & 6 & 10 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL3-4, BL4-4, \textcolor{red}{\textbf{BL5-4}},\\BL6-4, BL7-4}} & J2 & 7 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{10, 11} \\ \cline{4-6}
+ &&& J3 & 8 & 12 && \\ \cline{2-8}
+ & \multirow{4}{*}{C} & \multirow{2}{*}{\thead{BL3-3, BL4-3, \textcolor{red}{\textbf{BL5-3}},\\BL6-3, BL7-3}} & J2  & 9 & 17 & 1 & 13, 14 \\ \cline{4-8}
+ &&& J3 & 10 & 18 & 2 & 10, 11 \\ \cline{3-8}
+ && \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 11 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 12 &&& \\ \cline{2-8}
+ & \multirow{4}{*}{D} & \multirow{2}{*}{\thead{BL28-2, BL29-2, \textcolor{red}{\textbf{BL30-2}},\\BL1-2, BL2-2}} & J2 & 13 & 25 & \multirow{2}{*}{3} & \multirow{2}{*}{23, 24} \\ \cline{4-6}
+ &&& J3 & 14 & 26 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL28-4, BL29-4, \textcolor{red}{\textbf{BL30-4}},\\BL1-4, BL2-4}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{1, 12} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT003).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{3rd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{16}{*}{\thead{\textbf{MT003}\\\textbf{(0x1c)}}} & \multirow{4}{*}{A} & \multirow{2}{*}{\footnotesize{BL8-1, \textcolor{red}{\textbf{BL10-1}}, BL11-1}} & J2 & 1 & 1 & \multirow{2}{*}{1} & \multirow{2}{*}{15, 16}\\ \cline{4-6}
+ &&& J3 & 2 & 2 && \\ \cline{3-8}
+ && \multirow{2}{*}{\footnotesize{BL8-5, \textcolor{red}{\textbf{BL10-5}}, BL11-5}} & J2 & 3 & 3 & \multirow{2}{*}{2} & \multirow{2}{*}{8, 9} \\ \cline{4-6}
+ &&& J3 & 4 & 4 && \\ \cline{2-8}
+ & \multirow{4}{*}{B} & \multirow{2}{*}{\thead{BL8-2, \textcolor{red}{\textbf{BL10-2}},\\BL11-2, BL12-2}} & J2 & 5 & 9 & \multirow{2}{*}{1} & \multirow{2}{*}{15, 16} \\ \cline{4-6}
+ &&& J3 & 6 & 10 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL8-4, \textcolor{red}{\textbf{BL10-4}},\\BL11-4, BL12-4}} & J2 & 7 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{8, 9} \\ \cline{4-6}
+ &&& J3 & 8 & 12 && \\ \cline{2-8}
+ & \multirow{4}{*}{C} & \multirow{2}{*}{\thead{BL8-3, \textcolor{red}{\textbf{BL10-3}},\\BL11-3, BL12-3}} &  J2 & 9 & 17 & 1 & 15, 16 \\ \cline{4-8}
+ &&& J3 & 10 & 18 & 2 & 8, 9 \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL13-3, BL14-3, \textcolor{red}{\textbf{BL15-3}},\\BL16-3, BL17-3}} & J2 & 11 & 19 & 3 & 17, 18 \\ \cline{4-8}
+ &&& J3 & 12 & 20 & 4 & 6, 7 \\ \cline{2-8}
+ & \multirow{4}{*}{D} & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 13 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 14 &&& \\ \cline{3-8}
+ && \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 15 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 16 &&& \\ 
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT004).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{4th Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{16}{*}{\thead{\textbf{MT004}\\\textbf{(0x1e)}}} & \multirow{4}{*}{A} & \multirow{2}{*}{\footnotesize{\textcolor{red}{\textbf{BL21-1}}, BL22-1}} & J2 & 1 & 1 & \multirow{2}{*}{1} & \multirow{2}{*}{19, 20}\\ \cline{4-6}
+ &&& J3 & 2 & 2 && \\ \cline{3-8}
+ && \multirow{2}{*}{\footnotesize{\textcolor{red}{\textbf{BL21-5}}, BL22-5}} & J2 & 3 & 3 & \multirow{2}{*}{2} & \multirow{2}{*}{4, 5} \\ \cline{4-6}
+ &&& J3 & 4 & 4 && \\ \cline{2-8}
+ & \multirow{4}{*}{B} & \multirow{2}{*}{\thead{BL18-2, BL19-2, \textcolor{red}{\textbf{BL20-2}},\\BL21-2, BL22-2}} & J2 & 5 & 9 & \multirow{2}{*}{1} & \multirow{2}{*}{19, 20} \\ \cline{4-6}
+ &&& J3 & 6 & 10 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL18-4, BL19-4, \textcolor{red}{\textbf{BL20-4}},\\BL21-4, BL22-4}} & J2 & 7 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{4, 5} \\ \cline{4-6}
+ &&& J3 & 8 & 12 && \\ \cline{2-8}
+ & \multirow{4}{*}{C} & \multirow{2}{*}{\thead{BL18-3, BL19-3, \textcolor{red}{\textbf{BL20-3}},\\BL21-3, BL22-3}} & J2 & 9 & 17 & 1 & 19, 20 \\ \cline{4-8}
+ &&& J3 & 10 & 18 & 2 & 4, 5 \\ \cline{3-8}
+ && \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 11 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 12 &&& \\ \cline{2-8}
+ & \multirow{4}{*}{D} & \multirow{2}{*}{\thead{BL13-2, BL14-2, \textcolor{red}{\textbf{BL15-2}},\\BL16-2, BL17-2}} & J2 & 13 & 25 & \multirow{2}{*}{3} & \multirow{2}{*}{17, 18} \\ \cline{4-6}
+ &&& J3 & 14 & 26 && \\ \cline{3-8}
+ && \multirow{2}{*}{\thead{BL13-4, BL14-4, \textcolor{red}{\textbf{BL15-4}},\\BL16-4, BL17-4}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{6, 7} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{The Trigger Map of The MTD System for Run16}
+
+To subtract the jitter between different daughter cards of the QT board, a monitor signal is needed for each daughter card. The first ADC and first TAC channels of each daughter card are favored to be used for monitor. The TAC channel will have the actual TAC monitor signal while the ADC channel is used to record the running average of that signal, allowing for checking the noise correction offline. That means one trigger patch must be removed from each QT daughter card. Here is the Run 16 MTD trigger map, which is based on the map of Run14 and Run15. To make cabling work easier, the first 8 channels (4 trigger patches) of the breakout board go to one QT board and the rest 8 channels go to another QT board.  
+
+NOTE: Each QT board, with 4 daughter cards, has 32 inputs in a line and the inputs can be numbered 1 - 32 from top to bottom. Inputs 1 - 8, 9 - 16, 17 - 24, and 25 - 32 are belonging to daughter card A, B, C and D, respectively. Inputs 1 - 4, 9 - 12, 17 - 20, 25 - 28 of QT board are for MTRG trigger outputs. Inputs 5-8 are the associated TACs for inputs 1-4, etc.  
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT001).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{1st Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+ \multirow{8}{*}{\thead{\textbf{MT001}\\\textbf{(0x10)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL24-1, \textcolor{red}{\textbf{BL25-1}},\\BL26-1, BL27-1}} & J2 & 1 & 3 & \multirow{2}{*}{1} & \multirow{2}{*}{21, 22}\\ \cline{4-6}
+ &&& J3 & 2 & 4 && \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\thead{BL24-5, \textcolor{red}{\textbf{BL25-5}},\\BL26-5, BL27-5}} & J2 & 3 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{2, 3} \\ \cline{4-6}
+ &&& J3 & 4 & 12 && \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL24-2, \textcolor{red}{\textbf{BL25-2}},\\BL26-2, BL27-2}} & J2 & 5 & 19 & \multirow{2}{*}{1} & \multirow{2}{*}{21, 22} \\ \cline{4-6}
+ &&& J3 & 6 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL24-4, \textcolor{red}{\textbf{BL25-4}},\\BL26-4, BL27-4}} & J2 & 7 & 27 & \multirow{2}{*}{2} & \multirow{2}{*}{2, 3} \\ \cline{4-6}
+ &&& J3 & 8 & 28 && \\ \cline{2-8}
+ \Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT002).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{1st Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+ \multirow{8}{*}{\thead{\textbf{MT002}\\\textbf{(0x19)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL24-3, \textcolor{red}{\textbf{BL25-3}},\\BL26-3, BL27-3}} &  J2 & 9 & 3 & 1 & 21, 22 \\ \cline{4-8}
+ &&& J3 & 10 & 4 & 2 & 2, 3 \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\thead{BL28-3, BL29-3, \textcolor{red}{\textbf{BL30-3}},\\BL1-3, BL2-3}} & J2 & 11 & 11 & 3 & 23, 24 \\ \cline{4-8}
+ &&& J3 & 12 & 12 & 4 & 1, 12 \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL28-1, BL29-1, \textcolor{red}{\textbf{BL30-1}},\\BL1-1, BL2-1}} & J2 & 13 & 19 & \multirow{2}{*}{3} & \multirow{2}{*}{23, 24} \\ \cline{4-6}
+ &&& J3 & 14 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL28-5, BL29-5, \textcolor{red}{\textbf{BL30-5}},\\BL1-5, BL2-5}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{1, 12} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+ \Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT003).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{2nd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT003}\\\textbf{(0x1a)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL3-1, BL4-1, \textcolor{red}{\textbf{BL5-1}},\\BL6-1, BL7-1}} & J2 & 1 & 3 & \multirow{2}{*}{1} & \multirow{2}{*}{13, 14}\\ \cline{4-6}
+ &&& J3 & 2 &4 && \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\thead{BL3-5, BL4-5, \textcolor{red}{\textbf{BL5-5}},\\BL6-5, BL7-5}} & J2 & 3 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{10, 11} \\ \cline{4-6}
+ &&& J3 & 4 & 12 && \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL3-2, BL4-2, \textcolor{red}{\textbf{BL5-2}},\\BL6-2, BL7-2}} & J2 & 5 & 19 & \multirow{2}{*}{1} & \multirow{2}{*}{13, 14} \\ \cline{4-6}
+ &&& J3 & 6 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D}  & \multirow{2}{*}{\thead{BL3-4, BL4-4, \textcolor{red}{\textbf{BL5-4}},\\BL6-4, BL7-4}} & J2 & 7 & 27 & \multirow{2}{*}{2} & \multirow{2}{*}{10, 11} \\ \cline{4-6}
+ &&& J3 & 8 & 28 && \\ 
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT004).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{2nd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT004}\\\textbf{(0x1b)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL3-3, BL4-3, \textcolor{red}{\textbf{BL5-3}},\\BL6-3, BL7-3}} & J2  & 9 & 3 & 1 & 13, 14 \\ \cline{4-8}
+ &&& J3 & 10 & 4 & 2 & 10, 11 \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 11 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 12 &&& \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL28-2, BL29-2, \textcolor{red}{\textbf{BL30-2}},\\BL1-2, BL2-2}} & J2 & 13 & 19 & \multirow{2}{*}{3} & \multirow{2}{*}{23, 24} \\ \cline{4-6}
+ &&& J3 & 14 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL28-4, BL29-4, \textcolor{red}{\textbf{BL30-4}},\\BL1-4, BL2-4}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{1, 12} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT005).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{3rd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT005}\\\textbf{(0x1c)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\footnotesize{BL8-1, \textcolor{red}{\textbf{BL10-1}}, BL11-1}} & J2 & 1 & 3 & \multirow{2}{*}{1} & \multirow{2}{*}{15, 16}\\ \cline{4-6}
+ &&& J3 & 2 & 4 && \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\footnotesize{BL8-5, \textcolor{red}{\textbf{BL10-5}}, BL11-5}} & J2 & 3 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{8, 9} \\ \cline{4-6}
+ &&& J3 & 4 & 12 && \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL8-2, \textcolor{red}{\textbf{BL10-2}},\\BL11-2, BL12-2}} & J2 & 5 & 19 & \multirow{2}{*}{1} & \multirow{2}{*}{15, 16} \\ \cline{4-6}
+ &&& J3 & 6 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL8-4, \textcolor{red}{\textbf{BL10-4}},\\BL11-4, BL12-4}} & J2 & 7 & 27 & \multirow{2}{*}{2} & \multirow{2}{*}{8, 9} \\ \cline{4-6}
+ &&& J3 & 8 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT006).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{3rd Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT006}\\\textbf{(0x1d)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL8-3, \textcolor{red}{\textbf{BL10-3}},\\BL11-3, BL12-3}} &  J2 & 9 & 3 & 1 & 15, 16 \\ \cline{4-8}
+ &&& J3 & 10 & 4 & 2 & 8, 9 \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\thead{BL13-3, BL14-3, \textcolor{red}{\textbf{BL15-3}},\\BL16-3, BL17-3}} & J2 & 11 & 11 & 3 & 17, 18 \\ \cline{4-8}
+ &&& J3 & 12 & 12 & 4 & 6, 7 \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 13 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 14 &&& \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 15 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 16 &&& \\ 
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT007).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{4th Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT007}\\\textbf{(0x1e)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\footnotesize{\textcolor{red}{\textbf{BL21-1}}, BL22-1}} & J2 & 1 & 3 & \multirow{2}{*}{1} & \multirow{2}{*}{19, 20}\\ \cline{4-6}
+ &&& J3 & 2 & 4 && \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{\footnotesize{\textcolor{red}{\textbf{BL21-5}}, BL22-5}} & J2 & 3 & 11 & \multirow{2}{*}{2} & \multirow{2}{*}{4, 5} \\ \cline{4-6}
+ &&& J3 & 4 & 12 && \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL18-2, BL19-2, \textcolor{red}{\textbf{BL20-2}},\\BL21-2, BL22-2}} & J2 & 5 & 19 & \multirow{2}{*}{1} & \multirow{2}{*}{19, 20} \\ \cline{4-6}
+ &&& J3 & 6 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL18-4, BL19-4, \textcolor{red}{\textbf{BL20-4}},\\BL21-4, BL22-4}} & J2 & 7 & 27 & \multirow{2}{*}{2} & \multirow{2}{*}{4, 5} \\ \cline{4-6}
+ &&& J3 & 8 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
+
+\begin{table}[htp]
+\centering
+\tabcaption{The trigger map of the MTD system  (for MT008).}
+\label{mtdtrgmap}
+\newcolumntype{V}{!{\vrule width 1.6pt}}
+\begin{tabular}{Vc|c|c|c|c|c|c|cV}
+\Xhline{1.6pt}
+\thead{\textbf{QT}\\\textbf{Board ID}} & \thead{\textbf{Daughter}\\\textbf{Card ID}} & \thead{\textbf{MTRG}\\\textbf{Input}} & \thead{\textbf{MTRG}\\\textbf{Output}} & \thead{\textbf{4th Breakout}\\\textbf{Channel}} &\thead{\textbf{QT Input}\\\textbf{Channel}} & \thead{\textbf{2-bit MTD}\\\textbf{Sector ID}} & \thead{\textbf{TPC Sector}\\\textbf{Coverage}} \\
+ \Xhline{1.2pt}
+\multirow{8}{*}{\thead{\textbf{MT008}\\\textbf{(0x1f)}}} & \multirow{2}{*}{A} & \multirow{2}{*}{\thead{BL18-3, BL19-3, \textcolor{red}{\textbf{BL20-3}},\\BL21-3, BL22-3}} & J2 & 9 & 3 & 1 & 19, 20 \\ \cline{4-8}
+ &&& J3 & 10 & 4 & 2 & 4, 5 \\ \cline{2-8}
+ & \multirow{2}{*}{B} & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} & 11 & \multirow{2}{*}{N/A} & \multirow{2}{*}{N/A} &\multirow{2}{*}{N/A} \\  \cline{5-5}
+ &&&& 12 &&& \\ \cline{2-8}
+ & \multirow{2}{*}{C} & \multirow{2}{*}{\thead{BL13-2, BL14-2, \textcolor{red}{\textbf{BL15-2}},\\BL16-2, BL17-2}} & J2 & 13 & 19 & \multirow{2}{*}{3} & \multirow{2}{*}{17, 18} \\ \cline{4-6}
+ &&& J3 & 14 & 20 && \\ \cline{2-8}
+ & \multirow{2}{*}{D} & \multirow{2}{*}{\thead{BL13-4, BL14-4, \textcolor{red}{\textbf{BL15-4}},\\BL16-4, BL17-4}} & J2 & 15 & 27 & \multirow{2}{*}{4} & \multirow{2}{*}{6, 7} \\ \cline{4-6}
+ &&& J3 & 16 & 28 && \\
+\Xhline{1.6pt}
+\end{tabular}
+\end{table}
